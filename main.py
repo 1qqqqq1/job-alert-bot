@@ -1,10 +1,10 @@
+
 import time
 import json
 import logging
 import requests
 from telegram import Bot
 from bs4 import BeautifulSoup
-from openai import OpenAI
 from fuzzywuzzy import fuzz
 
 # Загрузка конфигурации
@@ -12,29 +12,28 @@ with open("config.json", "r") as f:
     config = json.load(f)
 
 bot = Bot(token=config["telegram_token"])
-openai = OpenAI()
 
 def fetch_seek_vacancies():
-    # Псевдо-функция. Реальную реализацию вставим позже.
+    # Псевдо-функция. Реальную реализацию можно заменить позже
     return [{
         "title": "Project Administrator",
         "company": "UNHCR Australia",
         "location": "Melbourne",
         "link": "https://seek.com.au/job/sample",
-        "description": "Supporting government funded humanitarian projects with planning and coordination."
+        "description": "Supporting government funded humanitarian projects with planning and coordination in cooperation with UN bodies."
     }]
 
 def match_score(resume_text, job_description):
-    response = openai.embeddings.create(input=[resume_text, job_description], model="text-embedding-ada-002")
-    vec1, vec2 = response.data[0].embedding, response.data[1].embedding
-    cosine = sum(x*y for x, y in zip(vec1, vec2)) / (
-        sum(x**2 for x in vec1)**0.5 * sum(y**2 for y in vec2)**0.5
-    )
-    return cosine
+    keywords = [
+        "project", "program", "administrator", "coordinator", "NGO",
+        "migration", "UN", "refugee", "asylum", "planning", "humanitarian", "support"
+    ]
+    hits = sum(1 for kw in keywords if kw.lower() in job_description.lower())
+    return hits / len(keywords)
 
 def send_telegram_message(text):
     bot.send_message(chat_id=5624396746, text=text, parse_mode="HTML")
-    
+
 def main():
     resume_text = "Experienced Program and Project Administrator with UN, NGO and government background."
     while True:

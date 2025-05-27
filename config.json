@@ -1,7 +1,13 @@
 {
     "telegram_token": "8197804872:AAHPYKriyvBvCqoHr-nMcjIpQIiJo3zw1G4",
-    "cities": ["Melbourne", "Dublin"],
-    "sources": ["seek.com.au", "indeed.ie"],
+    "cities": [
+        "Melbourne",
+        "Dublin"
+    ],
+    "sources": [
+        "seek.com.au",
+        "indeed.ie"
+    ],
     "target_roles": [
         "Program Administrator",
         "Project Administrator",
@@ -23,6 +29,6 @@
         "Department"
     ],
     "frequency": 60.0,
-    "min_relevance_score": 0.7,
+    "min_relevance_score": 0.3,
     "notify": "telegram"
 }
