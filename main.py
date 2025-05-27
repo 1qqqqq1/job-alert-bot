@@ -36,13 +36,20 @@ def send_telegram_message(text):
 
 def main():
     resume_text = "Experienced Program and Project Administrator with UN, NGO and government background."
+        sent_jobs = set()
     while True:
         for job in fetch_seek_vacancies():
+            job_id = job["title"] + job["company"] + job["link"]
+            if job_id in sent_jobs:
+                continue  # пропустить повтор
+
             score = match_score(resume_text, job["description"])
             if score >= config["min_relevance_score"]:
                 msg = f"📢 <b>{job['title']}</b> at <i>{job['company']}</i>\n📍 {job['location']}\n🔗 <a href='{job['link']}'>Apply Here</a>\n🤖 Match: {round(score * 100)}%"
                 send_telegram_message(msg)
+                sent_jobs.add(job_id)
         time.sleep(config["frequency"])
+
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
