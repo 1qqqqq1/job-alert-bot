@@ -33,8 +33,8 @@ def match_score(resume_text, job_description):
     return cosine
 
 def send_telegram_message(text):
-    bot.send_message(chat_id="@jobalerbot", text=text, parse_mode="HTML")
-
+    bot.send_message(chat_id=5624396746, text=text, parse_mode="HTML")
+    
 def main():
     resume_text = "Experienced Program and Project Administrator with UN, NGO and government background."
     while True:
