@@ -22,7 +22,7 @@
         "Government",
         "Department"
     ],
-    "frequency": 18000.0,
+    "frequency": 60.0,
     "min_relevance_score": 0.7,
     "notify": "telegram"
 }
