@@ -1,0 +1,28 @@
+{
+    "telegram_token": "8197804872:AAHPYKriyvBvCqoHr-nMcjIpQIiJo3zw1G4",
+    "cities": ["Melbourne", "Dublin"],
+    "sources": ["seek.com.au", "indeed.ie"],
+    "target_roles": [
+        "Program Administrator",
+        "Project Administrator",
+        "Programme Officer",
+        "Policy Officer",
+        "Migration Officer",
+        "Humanitarian Officer",
+        "UN Coordinator",
+        "Case Manager",
+        "NGO Coordinator",
+        "Government Liaison"
+    ],
+    "organisations": [
+        "UN",
+        "United Nations",
+        "Red Cross",
+        "IFRC",
+        "Government",
+        "Department"
+    ],
+    "frequency": 18000.0,
+    "min_relevance_score": 0.7,
+    "notify": "telegram"
+}

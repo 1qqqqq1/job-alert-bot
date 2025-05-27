@@ -1,0 +1,6 @@
+openai
+python-telegram-bot==13.15
+beautifulsoup4
+requests
+fuzzywuzzy
+python-dotenv
